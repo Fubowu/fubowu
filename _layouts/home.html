@@ -1,0 +1,79 @@
+---
+layout: default
+---
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-subtitle">Fu Bo's Notes · 自然與人文的交匯</div>
+  <h1 class="hero-title">福伯論壇</h1>
+  <p class="hero-desc">以文字記錄自然之美與人文之思，探索台灣的草木花卉，<br>也評論時事、抒發感懷。</p>
+  <div class="hero-stats">
+    <span><strong>874</strong>篇文章</span>
+    <span><strong>7</strong>年筆耕</span>
+    <span><strong>1,584</strong>張圖片</span>
+  </div>
+</section>
+
+<div class="main-wrap">
+  <main>
+    <div class="section-label">最新文章</div>
+    <div class="post-grid">
+      {% for post in paginator.posts %}
+      <div class="post-card">
+        <a href="{{ post.url | prepend: site.baseurl }}">
+          {% if post.images and post.images.size > 0 %}
+          <img class="post-card-img"
+               src="{{ site.baseurl }}/images/{{ post.number }}/{{ post.images[0] }}"
+               alt="{{ post.title }}" loading="lazy">
+          {% else %}
+          <div class="post-card-img-placeholder">🌿</div>
+          {% endif %}
+          <div class="post-card-body">
+            <div class="post-card-date">📅 {{ post.date | date: "%Y/%m/%d" }} &nbsp;#{{ post.number }}</div>
+            <div class="post-card-title">{{ post.title }}</div>
+            <div class="post-card-summary">{{ post.excerpt | strip_html | truncate: 100 }}</div>
+            <span class="post-card-link">閱讀全文</span>
+          </div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- 分頁 -->
+    <div class="pagination">
+      {% if paginator.previous_page %}
+        <a class="page-btn" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">‹</a>
+      {% else %}
+        <span class="page-btn" style="opacity:.4;cursor:default">‹</span>
+      {% endif %}
+
+      {% assign total = paginator.total_pages %}
+      {% assign cur   = paginator.page %}
+      {% for i in (1..total) %}
+        {% if i == cur %}
+          <span class="page-btn active">{{ i }}</span>
+        {% elsif i == 1 or i == total or i >= cur-2 and i <= cur+2 %}
+          {% if paginator.previous_page and i == 1 and cur > 4 %}
+            <a class="page-btn" href="{{ site.baseurl }}/">1</a>
+            <span class="page-ellipsis">…</span>
+          {% elsif i == total and cur < total-3 %}
+            <span class="page-ellipsis">…</span>
+            <a class="page-btn" href="{{ site.baseurl }}/page/{{ total }}/">{{ total }}</a>
+          {% else %}
+            <a class="page-btn" href="{% if i == 1 %}{{ site.baseurl }}/{% else %}{{ site.baseurl }}/page/{{ i }}/{% endif %}">{{ i }}</a>
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      {% if paginator.next_page %}
+        <a class="page-btn" href="{{ paginator.next_page_path | prepend: site.baseurl }}">›</a>
+      {% else %}
+        <span class="page-btn" style="opacity:.4;cursor:default">›</span>
+      {% endif %}
+
+      <span class="page-info">共 {{ paginator.total_posts }} 篇 · 第 {{ paginator.page }}/{{ paginator.total_pages }} 頁</span>
+    </div>
+  </main>
+
+  {% include sidebar.html %}
+</div>

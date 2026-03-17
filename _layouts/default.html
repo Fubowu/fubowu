@@ -13,5 +13,39 @@
   {% include header.html %}
   {{ content }}
   {% include footer.html %}
+
+  <!-- 手機側欄抽屜 -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <span>選單</span>
+      <button class="mobile-drawer-close" id="drawerClose" aria-label="關閉">✕</button>
+    </div>
+    <div class="mobile-drawer-body">
+      {% include sidebar.html %}
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      var toggle  = document.getElementById('menuToggle');
+      var overlay = document.getElementById('mobileOverlay');
+      var drawer  = document.getElementById('mobileDrawer');
+      var closeBtn= document.getElementById('drawerClose');
+      function open(){
+        overlay.classList.add('open');
+        drawer.classList.add('open');
+        document.body.style.overflow='hidden';
+      }
+      function close(){
+        overlay.classList.remove('open');
+        drawer.classList.remove('open');
+        document.body.style.overflow='';
+      }
+      if(toggle)  toggle.addEventListener('click', open);
+      if(overlay) overlay.addEventListener('click', close);
+      if(closeBtn)closeBtn.addEventListener('click', close);
+    })();
+  </script>
 </body>
 </html>

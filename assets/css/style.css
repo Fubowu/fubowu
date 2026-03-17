@@ -355,6 +355,11 @@ a:hover { color: var(--brown1); text-decoration: underline; }
   color: var(--cream);
   text-decoration: none;
 }
+.tag-count {
+  margin-left: 4px;
+  font-size: .68rem;
+  opacity: .7;
+}
 
 /* ─── 文章詳情頁 ──────────────────────────── */
 .post-page { max-width: 1100px; margin: 0 auto; padding: 40px 24px 60px; display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: start; }
@@ -437,8 +442,6 @@ a:hover { color: var(--brown1); text-decoration: underline; }
   flex-shrink: 0;
   width: 32px;
   height: 32px;
-  background: #4267B2;
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -500,15 +503,86 @@ mark {
   border-radius: 2px;
 }
 
+/* ─── 漢堡按鈕（預設隱藏，手機才顯示）──── */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 8px;
+  margin-left: auto;
+}
+.menu-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 2px;
+  transition: transform .2s, opacity .2s;
+}
+
+/* ─── 手機側欄抽屜 ──────────────────────── */
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  z-index: 200;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.mobile-overlay.open { display: block; opacity: 1; }
+.mobile-drawer {
+  position: fixed;
+  top: 0; right: -320px;
+  width: 300px;
+  height: 100%;
+  background: var(--cream);
+  z-index: 201;
+  overflow-y: auto;
+  transition: right .3s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: -4px 0 20px rgba(0,0,0,.2);
+}
+.mobile-drawer.open { right: 0; }
+.mobile-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: var(--brown1);
+  color: var(--cream);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: .88rem;
+  letter-spacing: .12em;
+  flex-shrink: 0;
+}
+.mobile-drawer-close {
+  background: none;
+  border: none;
+  color: var(--cream);
+  font-size: 1.3rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 6px;
+}
+.mobile-drawer-body { padding: 16px; }
+.mobile-drawer-body .sidebar { display: flex !important; }
+
 /* ─── RWD ────────────────────────────────── */
 @media (max-width: 900px) {
   .main-wrap, .post-page { grid-template-columns: 1fr; }
   .sidebar { display: none; }
+  .menu-toggle { display: flex; }
 }
 @media (max-width: 600px) {
   .post-grid { grid-template-columns: 1fr; }
   .hero-stats { gap: 16px; }
   .post-article { padding: 24px 20px; }
-  .header-inner { flex-direction: column; height: auto; padding: 12px 16px; gap: 8px; }
+  .header-inner { flex-direction: row; height: auto; padding: 10px 16px; gap: 8px; }
   .site-nav a { padding: 4px 10px; font-size: .8rem; }
 }

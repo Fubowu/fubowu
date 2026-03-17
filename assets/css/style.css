@@ -387,6 +387,119 @@ a:hover { color: var(--brown1); text-decoration: underline; }
 }
 .site-footer a { color: var(--tan2); }
 
+/* ─── 搜尋框（Sidebar）─────────────────────── */
+.search-form .search-input-wrap {
+  display: flex;
+  gap: 6px;
+}
+.search-input {
+  flex: 1;
+  padding: 6px 10px;
+  border: 1px solid var(--tan2);
+  border-radius: 4px;
+  background: var(--cream2);
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: .85rem;
+  color: var(--text);
+  outline: none;
+  transition: border-color .2s;
+}
+.search-input:focus { border-color: var(--brown3); }
+.search-btn {
+  padding: 6px 12px;
+  background: var(--brown3);
+  color: var(--white);
+  border: none;
+  border-radius: 4px;
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: .82rem;
+  cursor: pointer;
+  transition: background .2s;
+  white-space: nowrap;
+}
+.search-btn:hover { background: var(--brown1); }
+
+/* ─── Facebook 連結 ─────────────────────── */
+.fb-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: var(--cream);
+  border: 1px solid var(--tan2);
+  border-radius: 6px;
+  color: var(--text);
+  text-decoration: none;
+  transition: background .2s, border-color .2s;
+}
+.fb-link:hover { background: #e7f0ff; border-color: #4267B2; text-decoration: none; }
+.fb-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background: #4267B2;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.fb-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Noto Sans TC', sans-serif;
+  line-height: 1.3;
+}
+.fb-text strong { font-size: .88rem; color: var(--brown1); }
+.fb-text span   { font-size: .75rem; color: var(--text3); }
+.fb-arrow { font-size: 1.1rem; color: var(--text3); }
+
+/* ─── 搜尋結果頁 ────────────────────────── */
+.search-page-header {
+  max-width: 1100px;
+  margin: 0 auto 32px;
+  padding: 40px 24px 0;
+}
+.search-page-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--brown1);
+  margin-bottom: 20px;
+  letter-spacing: .06em;
+}
+.search-page-form .search-input-wrap {
+  display: flex;
+  gap: 8px;
+  max-width: 480px;
+}
+.search-input-lg {
+  font-size: .95rem;
+  padding: 9px 14px;
+}
+.search-hint {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: .85rem;
+  color: var(--text3);
+  margin-top: 14px;
+  min-height: 1.4em;
+}
+.search-no-results {
+  font-family: 'Noto Sans TC', sans-serif;
+  font-size: .9rem;
+  color: var(--text2);
+  text-align: center;
+  padding: 40px 0;
+}
+
+/* ─── 關鍵字高亮 ────────────────────────── */
+mark {
+  background: #fff0a0;
+  color: var(--brown1);
+  padding: 0 1px;
+  border-radius: 2px;
+}
+
 /* ─── RWD ────────────────────────────────── */
 @media (max-width: 900px) {
   .main-wrap, .post-page { grid-template-columns: 1fr; }

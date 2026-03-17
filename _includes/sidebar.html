@@ -65,7 +65,7 @@
       <div class="tag-cloud">
         {% assign sorted_tags = site.tags | sort %}
         {% for tag_data in sorted_tags %}
-          <a class="tag" href="{{ site.baseurl }}/search/?q={{ tag_data[0] | url_encode }}">{{ tag_data[0] }}<span class="tag-count">{{ tag_data[1] | size }}</span></a>
+          <a class="tag" href="{{ site.baseurl }}/search/?tag={{ tag_data[0] | url_encode }}">{{ tag_data[0] }}<span class="tag-count">{{ tag_data[1] | size }}</span></a>
         {% endfor %}
       </div>
     </div>

@@ -5,8 +5,8 @@
     </div>
     <nav>
       <ul class="site-nav">
-        <li><a href="{{ site.baseurl }}/" {% if page.url == '/' %}class="active"{% endif %}>首頁</a></li>
-        <li><a href="{{ site.baseurl }}/about/">關於</a></li>
+        <li class="nav-home"><a href="{{ site.baseurl }}/" {% if page.url == '/' %}class="active"{% endif %}>首頁</a></li>
+        <li class="nav-about"><a href="{{ site.baseurl }}/about/">關於</a></li>
       </ul>
     </nav>
     <button class="menu-toggle" id="menuToggle" aria-label="開啟選單">

@@ -578,6 +578,10 @@ mark {
   .main-wrap, .post-page { grid-template-columns: 1fr; }
   .sidebar { display: none; }
   .menu-toggle { display: flex; }
+  /* 手機：副標題"福伯の隨筆"隱藏，避免換行 */
+  .site-title a span { display: none; }
+  /* 手機："首頁"與標題點擊效果相同，隱藏 */
+  .nav-home { display: none; }
 }
 @media (max-width: 600px) {
   .post-grid { grid-template-columns: 1fr; }
@@ -585,4 +589,8 @@ mark {
   .post-article { padding: 24px 20px; }
   .header-inner { flex-direction: row; height: auto; padding: 10px 16px; gap: 8px; }
   .site-nav a { padding: 4px 10px; font-size: .8rem; }
+}
+/* 很窄的裝置（≤400px）："關於"也隱藏，避免換行，改由漢堡選單存取 */
+@media (max-width: 400px) {
+  .nav-about { display: none; }
 }

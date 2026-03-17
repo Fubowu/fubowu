@@ -53,10 +53,14 @@ fetch(BASEURL + "/search.json")
       data.forEach(doc => this.add(doc));
     });
 
-    // 頁面載入時若 URL 有 ?q= 就直接搜尋
+    // 頁面載入時依 URL 參數執行搜尋
     const params = new URLSearchParams(window.location.search);
-    const kw = params.get("q");
-    if (kw) {
+    const tag = params.get("tag");
+    const kw  = params.get("q");
+    if (tag) {
+      document.getElementById("searchInput").value = tag;
+      doTagFilter(tag);
+    } else if (kw) {
       document.getElementById("searchInput").value = kw;
       doSearch(kw);
     }
@@ -70,6 +74,39 @@ document.getElementById("searchForm").addEventListener("submit", function(e) {
     doSearch(kw);
   }
 });
+
+// 分類標籤精確過濾（不走 Lunr，直接比對 tags 陣列）
+function doTagFilter(tag) {
+  if (!postsData) return;
+  const matched = postsData.filter(p => Array.isArray(p.tags) && p.tags.includes(tag));
+
+  const hint = document.getElementById("searchHint");
+  const grid = document.getElementById("searchResults");
+  const none = document.getElementById("noResults");
+  document.getElementById("noResultsKw").textContent = tag;
+
+  if (matched.length === 0) {
+    grid.innerHTML = "";
+    none.style.display = "block";
+    hint.textContent = "";
+    return;
+  }
+
+  none.style.display = "none";
+  hint.textContent = `分類「${tag}」共 ${matched.length} 篇文章`;
+
+  grid.innerHTML = matched.map(p => `
+    <div class="post-card">
+      <a href="${p.url}">
+        <div class="post-card-body">
+          <div class="post-card-date">📅 ${p.date} &nbsp;#${p.number}</div>
+          <div class="post-card-title">${p.title}</div>
+          <div class="post-card-summary">${p.content.slice(0, 120)}…</div>
+          <span class="post-card-link">閱讀全文</span>
+        </div>
+      </a>
+    </div>`).join("");
+}
 
 document.getElementById("searchInput").addEventListener("input", function() {
   const kw = this.value.trim();

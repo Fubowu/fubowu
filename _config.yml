@@ -5,6 +5,7 @@ baseurl: "/fubowu"
 url: "https://fubowu.github.io"
 lang: zh-TW
 timezone: Asia/Taipei
+future: true
 
 # 分頁設定
 plugins:

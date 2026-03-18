@@ -19,7 +19,7 @@
     <div class="sidebar-block-body">
       <div class="about-avatar">🖊</div>
       <p class="about-text">本壇記錄作者多年來在台灣各地的自然觀察、植物探索，以及對時事與人文的感想筆記。</p>
-      <p class="about-text" style="font-size:.8rem;color:var(--text3)">撰文期間：2019年至今 · 共 874 篇</p>
+      <p class="about-text" style="font-size:.8rem;color:var(--text3)">撰文期間：2012年至今 · 共 1,131 篇</p>
     </div>
   </div>
 
@@ -62,10 +62,24 @@
   <div class="sidebar-block">
     <div class="sidebar-block-title">文章分類</div>
     <div class="sidebar-block-body">
+      <div class="sidebar-section-label">主題分類</div>
       <div class="tag-cloud">
-        {% assign sorted_tags = site.tags | sort %}
-        {% for tag_data in sorted_tags %}
-          <a class="tag" href="{{ site.baseurl }}/search/?tag={{ tag_data[0] | url_encode }}">{{ tag_data[0] }}<span class="tag-count">{{ tag_data[1] | size }}</span></a>
+        {% assign ai_tags = "時事政治,歷史典故,漢字文化,自然觀察,台灣踏查,節氣民俗,宗教信仰,藝文賞析,社會省思,攝影日記" | split: "," %}
+        {% for tag_name in ai_tags %}
+          {% assign tag_posts = site.tags[tag_name] %}
+          {% if tag_posts %}
+            <a class="tag" href="{{ site.baseurl }}/search/?tag={{ tag_name | url_encode }}">{{ tag_name }}<span class="tag-count">{{ tag_posts.size }}</span></a>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="sidebar-section-label" style="margin-top:14px">專欄分類</div>
+      <div class="tag-cloud">
+        {% assign wp_cats = "國際關係,兩岸關係,台灣政策,隨心隨筆,慧心錄,俄羅斯文學評論,雜文,台俄關係,台俄關係空白點,國際經貿" | split: "," %}
+        {% for tag_name in wp_cats %}
+          {% assign tag_posts = site.tags[tag_name] %}
+          {% if tag_posts %}
+            <a class="tag" href="{{ site.baseurl }}/search/?tag={{ tag_name | url_encode }}">{{ tag_name }}<span class="tag-count">{{ tag_posts.size }}</span></a>
+          {% endif %}
         {% endfor %}
       </div>
     </div>

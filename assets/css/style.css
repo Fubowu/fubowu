@@ -583,6 +583,7 @@ mark {
 .mobile-drawer-body .sidebar { display: flex !important; }
 
 /* ─── RWD ────────────────────────────────── */
+.br-mobile { display: none; }
 @media (max-width: 900px) {
   .main-wrap, .post-page { grid-template-columns: 1fr; }
   .sidebar { display: none; }
@@ -591,6 +592,9 @@ mark {
   .site-title a span { display: none; }
   /* 手機："首頁"與標題點擊效果相同，隱藏 */
   .nav-home { display: none; }
+  /* 手機：封面隱藏 FuBo's Notes 前綴，探索台灣獨立成行 */
+  .hero-notes-prefix { display: none; }
+  .br-mobile { display: block; }
 }
 @media (max-width: 600px) {
   .post-grid { grid-template-columns: 1fr; }

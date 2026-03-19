@@ -383,6 +383,32 @@ a:hover { color: var(--brown1); text-decoration: underline; }
 .post-images.multi-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
 .post-images.multi-3 img { max-height: 200px; margin-bottom: 0; }
 .post-content { font-size: .97rem; line-height: 2.1; color: var(--text); letter-spacing: .03em; white-space: pre-wrap; }
+/* ─── 訂閱表單 ──────────────────────────────── */
+.subscribe-desc { font-size: .8rem; color: var(--text2); margin: 0 0 10px 0; line-height: 1.6; }
+.subscribe-input-wrap { display: flex; gap: 6px; }
+.fubowu-subscribe-form input[type="email"] {
+  flex: 1; padding: 7px 10px; border: 1px solid var(--tan2);
+  border-radius: 5px; font-size: .82rem; background: var(--white);
+  color: var(--text); font-family: 'Noto Sans TC', sans-serif;
+  box-sizing: border-box; outline: none; transition: border-color .2s;
+}
+.fubowu-subscribe-form input[type="email"]:focus { border-color: var(--brown3); }
+.fubowu-subscribe-form input[type="email"]::placeholder { color: var(--text3); }
+.subscribe-submit-btn {
+  padding: 7px 14px; background: var(--brown2); color: var(--cream);
+  border: none; border-radius: 5px; font-size: .82rem; font-weight: 600;
+  font-family: 'Noto Sans TC', sans-serif; cursor: pointer;
+  transition: background .2s; white-space: nowrap;
+}
+.subscribe-submit-btn:hover { background: var(--brown1); }
+.subscribe-success {
+  font-size: .83rem; color: var(--brown2); margin: 0;
+  padding: 8px 10px; background: var(--cream); border: 1px solid var(--tan);
+  border-radius: 5px;
+}
+/* 隱藏 MailerLite 預設樣式衝突 */
+#mlb2-38721864 { all: unset; display: block; }
+
 /* ─── 分享按鈕 ──────────────────────────────── */
 .share-section { margin-top: 36px; padding: 20px 0; border-top: 1px solid var(--tan); text-align: center; }
 .share-buttons { display: inline-flex; gap: 14px; justify-content: center; align-items: center; }

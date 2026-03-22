@@ -1,0 +1,1 @@
+{%- assign _n = site.posts.size -%}{%- if _n >= 1000 -%}{%- assign _d = _n | divided_by: 1000 -%}{%- assign _r = _n | modulo: 1000 -%}{{ _d }},{%- if _r < 100 %}0{%- endif -%}{%- if _r < 10 %}0{%- endif -%}{{ _r }}{%- else -%}{{ _n }}{%- endif -%}

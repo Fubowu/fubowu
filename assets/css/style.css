@@ -311,6 +311,8 @@ a:hover { color: var(--brown1); text-decoration: underline; }
   line-height: 1.8;
   margin-bottom: 10px;
 }
+.about-avatar-link { display: block; text-decoration: none; }
+.about-avatar-link:hover .about-avatar { opacity: .8; border-color: var(--brown3); }
 .about-avatar {
   width: 72px; height: 72px;
   border-radius: 50%;

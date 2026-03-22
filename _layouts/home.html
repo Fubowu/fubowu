@@ -8,7 +8,7 @@ layout: default
   <h1 class="hero-title">福伯論壇</h1>
   <p class="hero-desc">以文字記錄自然之美與人文之思，<br class="br-mobile">探索台灣的草木花卉，<br>也評論時事、抒發感懷。</p>
   <div class="hero-stats">
-    <span><strong>{{ site.posts.size }}</strong>篇文章</span>
+    <span><strong>{%- include format_posts.html -%}</strong>篇文章</span>
     <span><strong>{{ site.time | date: '%Y' | minus: 2012 }}</strong>年筆耕</span>
     <span><strong>1,716</strong>張圖片</span>
   </div>
